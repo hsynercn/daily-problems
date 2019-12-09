@@ -30,21 +30,29 @@ class Solution:
         last_common = ListNode(sum)
         last_common.next = previous
         previous = last_common
+
+    if len(stack_a) != 0 or len(stack_b) != 0:
+        while len(stack_a) != 0:
+            val_a = stack_a.pop()
+            sum = val_a + extra
+            extra = sum // 10
+            sum %= 10
+            last_common = ListNode(sum)
+            last_common.next = previous
+            previous = last_common
+        while len(stack_b) != 0:
+            val_b = stack_b.pop()
+            sum = val_b + extra
+            extra = sum // 10
+            sum %= 10
+            last_common = ListNode(sum)
+            last_common.next = previous
+            previous = last_common
+
     if extra == 1:
         last_common = ListNode(1)
         last_common.next = previous
         previous = last_common
-    while len(stack_a) != 0:
-        val_a = stack_a.pop()
-        last_common = ListNode(val_a)
-        last_common.next = previous
-        previous = last_common
-    while len(stack_b) != 0:
-        val_b = stack_b.pop()
-        last_common = ListNode(val_b)
-        last_common.next = previous
-        previous = last_common
-
     return last_common
 
 l1 = ListNode(2)
