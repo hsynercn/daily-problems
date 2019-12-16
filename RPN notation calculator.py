@@ -22,7 +22,10 @@ def eval(expression):
     for c in rpn:
         if c == '+' or c == '-' or c == '*' or c == '/' or c == '(':
             second_param = stack.pop()
-            first_param = stack.pop()
+            if len(stack)==0:
+                first_param = 0
+            else:
+                first_param = stack.pop()
             if c == '+':
                 stack.append(first_param + second_param)
             elif c == '-':
@@ -37,6 +40,6 @@ def eval(expression):
     return res
 
 
-#print eval('- (3 + ( 2 - 1 ) )')
-print eval('2 + (3 * 8) - (4 + (4 / (2 + 2)) * 6)')
+print eval('- (3 + ( 2 - 1 ) )')
+#print eval('2 + (3 * 8) - (4 + (4 / (2 + 2)) * 6)')
 # -4
